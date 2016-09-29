@@ -4,19 +4,19 @@ LDFLAGS = -lm -lpthread
 
 .PHONY: all clean
 
-all: source emu
+all: testsource testemu
 
 clean:
-	rm -f *.o source emu
+	rm -f *.o testsource testemu
 	$(MAKE) clean -C mueb
 
 mueb/libMUEB.a:
 	$(MAKE) -C mueb
 
-source: source.o mueb/libMUEB.a
+testsource: testsource.o mueb/libMUEB.a
 	$(CXX) $(LDFLAGS) $^ -o $@
 
-emu: emu.o mueb/libMUEB.a
+testemu: testemu.o mueb/libMUEB.a
 	$(CXX) $(LDFLAGS) $^ -o $@
 
 %.o: %.cpp $(HEADERS)
