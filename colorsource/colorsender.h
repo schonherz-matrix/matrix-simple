@@ -19,7 +19,7 @@ class ColorSender: public QObject {
 		std::mutex m_;
 		std::unique_ptr<Timer> timer_;
         
-        MUEBTransmitter transmitter;
+        MUEBTransmitter transmitter_;
 		void packetCallback();
 	public slots:
 		void setColor(const QColor& color);

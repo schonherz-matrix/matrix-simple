@@ -27,7 +27,7 @@ void ColorSender::packetCallback() {
 			frame.pixels(x,y) = rgb;
 		}
 	}
-	transmitter.sendFrame(frame);
+	transmitter_.sendFrame(frame);
 }
 
 ColorSender::~ColorSender() {
