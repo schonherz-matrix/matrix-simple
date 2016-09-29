@@ -5,13 +5,14 @@ QMAKE = /usr/lib64/qt5/bin/qmake
 
 .PHONY: all clean
 
-all: emu/Emu colorsource/ColorSource animsource/AnimSource matrixsource/MatrixSource
+all: emu/Emu colorsource/ColorSource animsource/AnimSource animsource/DrawSource matrixsource/MatrixSource
 
 clean:
 	$(MAKE) clean -C mueb
 	$(MAKE) clean -C emu
 	$(MAKE) clean -C colorsource
 	$(MAKE) clean -C animsource
+	$(MAKE) clean -C drawsource
 	$(MAKE) clean -C matrixsource
 
 mueb/libMUEB.a:
@@ -25,6 +26,9 @@ colorsource/ColorSource: mueb/libMUEB.a
 
 animsource/AnimSource: mueb/libMUEB.a
 	$(MAKE) -C animsource
+
+drawsource/DrawSource: mueb/libMUEB.a
+	$(MAKE) -C drawsource
 
 matrixsource/MatrixSource: mueb/libMUEB.a
 	$(MAKE) -C matrixsource
