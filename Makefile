@@ -7,7 +7,7 @@ LDFLAGS = -lm -lpthread
 all: source emu
 
 clean:
-	rm -f *.o main
+	rm -f *.o source emu
 	$(MAKE) clean -C mueb
 
 mueb/libMUEB.a:

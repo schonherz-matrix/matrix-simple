@@ -15,10 +15,10 @@ inline static int UpdateFrame(uint8_t* in, Frame& f)
     
     for(int wn = PN * 52, i = 0; wn < (PN+1) * 52; ++wn, ++i)
     {
-       auto bf = f.pixels( (wn%16)*2 + 0, (wn/16)*2 + 0);
-       auto jf = f.pixels( (wn%16)*2 + 1, (wn/16)*2 + 0);
-       auto bl = f.pixels( (wn%16)*2 + 0, (wn/16)*2 + 1);
-       auto jl = f.pixels( (wn%16)*2 + 1, (wn/16)*2 + 1);
+       auto& bf = f.pixels( (wn%16)*2 + 0, (wn/16)*2 + 0);
+       auto& jf = f.pixels( (wn%16)*2 + 1, (wn/16)*2 + 0);
+       auto& bl = f.pixels( (wn%16)*2 + 0, (wn/16)*2 + 1);
+       auto& jl = f.pixels( (wn%16)*2 + 1, (wn/16)*2 + 1);
        
        bf.r = (in[i*6+0 + 2] & 0xf0) << 1;
        bf.g = (in[i*6+0 + 2] & 0x0f) << 5;

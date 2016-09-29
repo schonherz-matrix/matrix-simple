@@ -7,7 +7,7 @@ LDFLAGS = -lm -lpthread
 all: libMUEB.a
 
 clean:
-	rm -f *.o libMUEB.a
+	rm -f *.o libMUEB.a ../common/*.o
 
 libMUEB.a: muebtransmitter.o muebreceiver.o udpsocket.o udpsocket_linux.o ../common/serialization.o
 	ar rcs $@ $^
