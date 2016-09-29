@@ -76,6 +76,7 @@ MUEBReceiver::MUEBReceiver(std::function<void(Frame)>&& callback)
     std::cout << "UDP Socket will receive packets on port "  
               << port_ << std::endl;
 
+    //socket->readTimeout(50);
     socket->bind({0,0,0,0}, port_);
     
     socket_.swap (socket);
