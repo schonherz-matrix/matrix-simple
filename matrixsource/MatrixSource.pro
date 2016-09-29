@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = sw-matrixsource
+TARGET = MatrixSource
 TEMPLATE = app
 
 INCLUDEPATH+=include . ../mueb/ ../common/ ./fmod/lowlevel/inc/
