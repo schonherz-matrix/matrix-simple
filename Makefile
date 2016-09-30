@@ -14,6 +14,7 @@ clean:
 	$(MAKE) clean -C animsource
 	$(MAKE) clean -C drawsource
 	$(MAKE) clean -C matrixsource
+	rm -f emu/Emu colorsource/ColorSource animsource/AnimSource drawsource/DrawSource matrixsource/MatrixSource
 
 mueb/libMUEB.a:
 	$(MAKE) -C mueb
