@@ -30,7 +30,6 @@ void MatrixVideoPlayer::play() {
         controlTaskQueue = decltype(controlTaskQueue)(); // clear...
         state = PLAYING;
         currentFrame = 0;
-        triggerFrameParity = EVEN;
         targetTimeDelta = microseconds(0);
 
         // start display thread
@@ -185,26 +184,17 @@ void MatrixVideoPlayer::displayThreadFunc() {
             // TODO: display every second frame!
             // dummy display code
             if (state == PAUSED) {
-                if (!isTriggerFrame(currentFrame)) {
-                    currentFrame++;
+                cout << "Displaying paused frame " << currentFrame << endl;
+                if (PresentFrame) {
+                    PresentFrame(frames[currentFrame]);
                 }
-                else {
-                    cout << "Displaying paused frames " << currentFrame << ", " << currentFrame+1 << endl;
-                    if (PresentFrame) {
-                        PresentFrame(frames[currentFrame]);
-                    }
-                    notifyListenersFrame(frames[currentFrame]);
-                    currentFrame--; // dirty hack to resend the last two frames over and over again
+                notifyListenersFrame(frames[currentFrame]);
+            } else {
+                cout << "Displaying running frame " << currentFrame << endl;
+                if (PresentFrame) {
+                    PresentFrame(frames[currentFrame]);
                 }
-            }
-            else {
-                if (isTriggerFrame(currentFrame)) {
-                    cout << "Displaying running frames " << currentFrame << ", " << currentFrame + 1 << endl;
-                    if (PresentFrame) {
-                        PresentFrame(frames[currentFrame]);
-                    }
-                    notifyListenersFrame(frames[currentFrame]);
-                }
+                notifyListenersFrame(frames[currentFrame]);
                 currentFrame++;
             }
         }

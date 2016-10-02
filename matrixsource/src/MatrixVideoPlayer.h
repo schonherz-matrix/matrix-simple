@@ -23,10 +23,6 @@ class MatrixVideoPlayerListener;
 
 
 class MatrixVideoPlayer {
-    enum eTriggerFrameParity {
-        EVEN,
-        ODD,
-    };
 public:
     enum eState {
         EMPTY,
@@ -78,9 +74,6 @@ public:
 
 private:
     void displayThreadFunc();
-    inline bool isTriggerFrame(size_t frameIndex) {
-        return triggerFrameParity == EVEN ? frameIndex % 2 == 0 : frameIndex % 2 == 1;
-    }
     
     void notifyListenersState(eState state);
     void notifyListenersTime(double time);
@@ -96,7 +89,6 @@ private:
     std::queue<std::function<bool(std::chrono::microseconds)>> controlTaskQueue;
 
     std::atomic<eState> state; // current state of the player
-    std::atomic<eTriggerFrameParity> triggerFrameParity;
 
     std::vector<PlayerFrame> frames; // buffer containing all the frames
     std::chrono::microseconds frameTime; // how much time there's between 2 frames
@@ -126,7 +118,6 @@ void MatrixVideoPlayer::setTime(std::chrono::duration<Rep, Period> time) {
                     if (frameDesired < frames.size()) {
                         std::this_thread::sleep_for(frameTime - timeOvershoot);
                         currentFrame = frameDesired;
-                        triggerFrameParity = currentFrame % 2 == 0 ? EVEN : ODD;
                     }
     
                     return false; // interrupt frame and start over

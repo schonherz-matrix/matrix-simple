@@ -103,7 +103,7 @@ bool MatrixPlayer::load(const std::string& filePath) {
     }
         
     if (isLoaded) {
-        loader.resample(microseconds(1000*1000/20));
+        loader.resample(microseconds(1000*1000/30));
         isVideoOk = videoPlayer.load(loader.getFrames().data(), loader.getFrames().size(), loader.getFrameTime());
         if (loader.getSoundData()) {
             hasAudio = true;

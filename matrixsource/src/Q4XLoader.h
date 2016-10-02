@@ -60,6 +60,7 @@ void Q4XLoader::resample(std::chrono::duration<Rep, Period> frameTime) {
     resampledFrameTime = frameTime;
     isResampled = true;
     
+    /*
     std::chrono::microseconds length = originalFrames.size() * originalFrameTime;
     std::chrono::microseconds sampleTime(0);
     while (sampleTime < length) {
@@ -69,5 +70,19 @@ void Q4XLoader::resample(std::chrono::duration<Rep, Period> frameTime) {
         
         // increase sample time
         sampleTime += resampledFrameTime;
+    }
+    */
+    size_t resampledFrameCount = (originalFrames.size() * originalFrameTime.count()) / resampledFrameTime.count();
+    for (int i = 0; i < resampledFrameCount; i++) {
+        resampledFrames.push_back(originalFrames[(i*resampledFrameTime.count())/originalFrameTime.count()]);
+    }
+    
+    // Add one blank black frame
+    {
+        PlayerFrame lastFrame = resampledFrames.back();
+        PlayerFrame blankFrame;
+        blankFrame.resize(lastFrame.width(), lastFrame.height());
+        resampledFrames.push_back(blankFrame);
+        resampledFrames.push_back(blankFrame);
     }
 }
