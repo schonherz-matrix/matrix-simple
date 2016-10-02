@@ -5,6 +5,8 @@
 #-------------------------------------------------
 
 QT       += core gui
+QMAKE_CXX = clang++
+QMAKE_CXXFLAGS += -std=c++11 -Wall -Wno-narrowing -pedantic -O3 -g
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

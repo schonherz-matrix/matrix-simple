@@ -66,7 +66,7 @@ void MatrixVideoPlayer::stop() {
 // Get state
 
 std::chrono::microseconds MatrixVideoPlayer::getTime() const {
-    switch (state) {
+    switch (+state) {
         case PAUSED:
         case PLAYING:
             return currentFrame*frameTime;

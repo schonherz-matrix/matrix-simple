@@ -6,7 +6,8 @@ TEMPLATE = app
 TARGET = ColorSource
 QT += core gui widgets
 INCLUDEPATH += . ../mueb/ ../common/
-QMAKE_CXXFLAGS += -std=c++11 -Wall -pedantic -O3
+QMAKE_CXX = clang++
+QMAKE_CXXFLAGS += -std=c++11 -Wall -Wno-narrowing -pedantic -O3 -g
 QMAKE_LFLAGS += -lm
 
 # Input

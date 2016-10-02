@@ -36,13 +36,13 @@ private:
 
 template <typename T>
 inline Array2D<T>::Array2D (void)
-    : width(0), height(0), store ( nullptr, std::default_delete<T[]>() )
+    : width(0), height(0), store ( nullptr )
 {
 }
 
 template <typename T> 
 inline Array2D<T>::Array2D (size_t x, size_t y)
-    : width(x), height(y), store (new T[x*y], std::default_delete<T[]>() )
+    : width(x), height(y), store (new T[x*y])
 {
 }
 
@@ -120,7 +120,7 @@ inline void Array2D<T>::toDeep() const
 template <typename T>
 inline void Array2D<T>::resize (size_t nx, size_t ny) 
 {
-    store.reset (new T[nx*ny], std::default_delete<T[]>());
+    store.reset (new T[nx*ny]);
     width = nx; height = ny;
 } 
 

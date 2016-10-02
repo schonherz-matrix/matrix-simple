@@ -4,7 +4,11 @@
 
 
 
-PlayerFrame::PlayerFrame() {
+PlayerFrame::PlayerFrame()
+    : data(nullptr)
+    , width_(0)
+    , height_(0)
+{
     data = nullptr;
 }
 
@@ -21,9 +25,11 @@ PlayerFrame::PlayerFrame(const PlayerFrame& other) {
     width_ = other.width_;
     height_ = other.height_;
     data = new Color[width_*height_];
-    for (size_t i=0; i<width_*height_; ++i) {
-        data[i] = other.data[i];
-    }    
+    if (other.data != nullptr) {
+        for (size_t i=0; i<width_*height_; ++i) {
+            data[i] = other.data[i];
+        }
+    }
 }
 
 PlayerFrame::PlayerFrame(PlayerFrame&& other) {
@@ -31,6 +37,8 @@ PlayerFrame::PlayerFrame(PlayerFrame&& other) {
     height_ = other.height_;
     data = other.data;
     other.data = nullptr;
+    other.height_ = 0;
+    other.width_ = 0;
 }
 
 PlayerFrame& PlayerFrame::operator=(const PlayerFrame& other) {
@@ -40,9 +48,13 @@ PlayerFrame& PlayerFrame::operator=(const PlayerFrame& other) {
     width_ = other.width_;
     height_ = other.height_;
     data = new Color[width_*height_];
-    for (size_t i=0; i<width_*height_; ++i) {
-        data[i] = other.data[i];
-    }  
+    if (other.data != nullptr) {
+        for (size_t i=0; i<width_*height_; ++i) {
+            data[i] = other.data[i];
+        }
+    }
+    
+    return *this;
 }
 
 PlayerFrame& PlayerFrame::operator=(PlayerFrame&& other) {
@@ -53,6 +65,10 @@ PlayerFrame& PlayerFrame::operator=(PlayerFrame&& other) {
     height_ = other.height_;
     data = other.data;
     other.data = nullptr;
+    other.height_ = 0;
+    other.width_ = 0;
+    
+    return *this;
 }
 
 Color& PlayerFrame::operator()(size_t x, size_t y) {
