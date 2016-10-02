@@ -83,6 +83,5 @@ void Q4XLoader::resample(std::chrono::duration<Rep, Period> frameTime) {
         PlayerFrame blankFrame;
         blankFrame.resize(lastFrame.width(), lastFrame.height());
         resampledFrames.push_back(blankFrame);
-        resampledFrames.push_back(blankFrame);
     }
 }

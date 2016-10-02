@@ -206,7 +206,7 @@ void MatrixVideoPlayer::displayThreadFunc() {
         cout << "Actual frametime: " << elapsed.count()/1000.0 << " ms" << endl;
         lastTime = now;
 
-        if (currentFrame == frames.size()-1) {
+        if (currentFrame == frames.size()) {
             state = STOPPED;
             notifyListenersTrackEnd();
             notifyListenersState(state);
