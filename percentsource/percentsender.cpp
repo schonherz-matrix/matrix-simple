@@ -39,7 +39,7 @@ void PercentSender::setPercent(int percent) {
         }
         frame_.pixels = Array2D<Color>(32, 26);
 
-        // First digit
+        /*// First digit
         if (percent_ == 100) {
             for (int x = 0; x < 4; x++) {
                 for (int y = 0; y < 7; y++) {
@@ -69,11 +69,11 @@ void PercentSender::setPercent(int percent) {
             for (int y = 0; y < 7; y++) {
                 frame_.pixels(x + 28, y) = digits[10][y][x] ? Color{255, 0, 0} : Color{0, 0, 0};
             }
-        }
+        }*/
         
         // Filling
-        for (int x = 16; x < 32; x++) {
-            for (int y = 26 - ((26 - 7) * percent_ / 100); y < 26; y++) {
+        for (int x = 16; x < 24; x++) {
+            for (int y = 26 - (26 * percent_ / 100); y < 26; y++) {
                 frame_.pixels(x, y) = Color{255, 0, 0};
             }
         }
@@ -98,21 +98,21 @@ void PercentSender::packetCallback() {
 void PercentSender::flashCallback() {
     m_.lock();
     if (flashCount_ == 180) {
-        for (int x = 16; x < 32; x++) {
-            for (int y = 7; y < 26; y++) {
+        for (int x = 16; x < 24; x++) {
+            for (int y = 0; y < 26; y++) {
                 frame_.pixels(x, y) = Color{255, 0, 0};
             }
         }
     } else {
         if (flashCount_ % 3 == 2) {
-            for (int x = 16; x < 32; x++) {
-                for (int y = 7; y < 26; y++) {
+            for (int x = 16; x < 24; x++) {
+                for (int y = 0; y < 26; y++) {
                     frame_.pixels(x, y) = Color{0, 0, 0};
                 }
             }
         } else {
-            for (int x = 16; x < 32; x++) {
-                for (int y = 7; y < 26; y++) {
+            for (int x = 16; x < 24; x++) {
+                for (int y = 0; y < 26; y++) {
                     frame_.pixels(x, y) = Color{255, 0, 0};
                 }
             }
