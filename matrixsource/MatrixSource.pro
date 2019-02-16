@@ -37,4 +37,5 @@ HEADERS  += \
 FORMS    += \
     src/MatrixPlayerWindow.ui
 
-DISTFILES +=
+# Copy the dynamic library.
+QMAKE_PRE_LINK=cp ./fmod/lowlevel/lib/x86_64/libfmodL.so .

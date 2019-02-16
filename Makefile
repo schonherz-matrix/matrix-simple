@@ -1,7 +1,6 @@
 CXX = clang++
 CXXFLAGS = -std=c++11 -O3 -Wall -Wdeprecated -pedantic -g
 LDFLAGS = -lm -lpthread
-QMAKE = /usr/lib64/qt5/bin/qmake
 
 .PHONY: all clean
 
@@ -22,24 +21,31 @@ mueb/libMUEB.a:
 	$(MAKE) -C mueb
 
 emu/Emu: mueb/libMUEB.a
+	qmake emu/ -o emu/Makefile
 	$(MAKE) -C emu
 
 colorsource/ColorSource: mueb/libMUEB.a
+	qmake colorsource/ -o colorsource/Makefile
 	$(MAKE) -C colorsource
 
 animsource/AnimSource: mueb/libMUEB.a
+	qmake animsource/ -o animsource/Makefile
 	$(MAKE) -C animsource
 
 drawsource/DrawSource: mueb/libMUEB.a
+	qmake drawsource/ -o drawsource/Makefile
 	$(MAKE) -C drawsource
 
 matrixsource/MatrixSource: mueb/libMUEB.a
+	qmake matrixsource/ -o matrixsource/Makefile
 	$(MAKE) -C matrixsource
 
 windowtestsource/WindowTestSource: mueb/libMUEB.a
+	qmake windowtestsource/ -o windowtestsource/Makefile
 	$(MAKE) -C windowtestsource
 
 percentsource/PercentSource: mueb/libMUEB.a
+	qmake percentsource/ -o percentsource/Makefile
 	$(MAKE) -C percentsource
 
 %.o: %.cpp $(HEADERS)
