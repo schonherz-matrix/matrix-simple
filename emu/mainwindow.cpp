@@ -1,25 +1,43 @@
 #include "mainwindow.h"
-#include <QMainWindow>
-#include <QColorDialog>
-#include <QCoreApplication>
 
-MainWindow::MainWindow(QWidget* parent): QMainWindow{parent} {
-	
-	/* Initalize members */
-	frameProcessor = std::unique_ptr<FrameProcessor>{new FrameProcessor{}};
-	gridDrawer = std::unique_ptr<GridDrawer>{new GridDrawer{this, 32, 26, 20}};
-	
-	/* Setting geometry */
-	setGeometry(250, 250, gridDrawer->sizeHint().width(), gridDrawer->sizeHint().height());
+#include <QBrush>
+#include <QPainter>
+#include <QPen>
 
-	/* Setting ColorDialog as central widget */
-    setCentralWidget(gridDrawer.get());
+MainWindow::MainWindow(QWidget* parent)
+    : QMainWindow{parent}, muebreceiver_(this) {
+  windowSize_ = 20;
 
-	/* View -> Controller signals */
-	qRegisterMetaType<Frame>("Frame");
-    connect(frameProcessor.get(), &FrameProcessor::newFrame, gridDrawer.get(), &GridDrawer::setFrame);
+  frame_.pixels = Array2D<Color>(32, 26);
+  for (int x = 0; x < frame_.pixels.getWidth(); x++) {
+    for (int y = 0; y < frame_.pixels.getHeight(); y++) {
+      frame_.pixels(x, y) = Color{0, 0, 0};
+    }
+  }
+
+  /* Setting geometry */
+  setFixedSize(20 * 32, 20 * 26);
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint);
+
+  /* View -> Controller signals */
+  connect(&muebreceiver_, &MUEBReceiver::frameChanged, this, &MainWindow::updateFrame);
 }
 
-MainWindow::~MainWindow(){
+void MainWindow::updateFrame(Frame frame) {
+  frame_ = frame;
+  update();
+}
 
+void MainWindow::paintEvent(QPaintEvent* event) {
+  QPainter painter{this};
+
+  for (int x = 0; x < frame_.pixels.getWidth(); x++) {
+    for (int y = 0; y < frame_.pixels.getHeight(); y++) {
+      painter.setBrush(
+          QBrush{QColor{frame_.pixels(x, y).r, frame_.pixels(x, y).g,
+                        frame_.pixels(x, y).b}});
+      painter.drawRect(windowSize_ * x, windowSize_ * y, windowSize_,
+                       windowSize_);
+    }
+  }
 }

@@ -1,23 +1,27 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "griddrawer.h"
-#include "frameprocessor.h"
-#include <memory>
 #include <QMainWindow>
-#include <QPainter>
-#include <QWidget>
+#include "frame.h"
+#include "muebreceiver.h"
 
 class MainWindow : public QMainWindow {
-    Q_OBJECT
+  Q_OBJECT
 
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+  Frame frame_;
+  int windowSize_;
 
-private:
-	std::unique_ptr<FrameProcessor> frameProcessor;
-	std::unique_ptr<GridDrawer> gridDrawer;
+  MUEBReceiver muebreceiver_;
+
+ public:
+  explicit MainWindow(QWidget* parent = nullptr);
+
+ public slots:
+  void updateFrame(Frame frame);
+
+  // QWidget interface
+ protected:
+  void paintEvent(QPaintEvent* event) override;
 };
 
-#endif // MAINWINDOW_H
+#endif  // MAINWINDOW_H

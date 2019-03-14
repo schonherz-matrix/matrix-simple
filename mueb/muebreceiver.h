@@ -1,27 +1,26 @@
-#pragma once
+#ifndef MUEBRECEIVER_H
+#define MUEBRECEIVER_H
 
-#include <functional>
-#include <atomic>
-#include <thread>
-#include <memory>
+#include <QObject>
+#include <QUdpSocket>
 
-#include "udpsocket.h"
 #include "../common/frame.h"
 
-class MUEBReceiver {
-private:
-    std::unique_ptr<UDPSocket> socket_;
-    uint16_t port_;
-    
-    std::function<void(Frame)> callback_;
-    
-    std::atomic_bool can_run_;
-    std::unique_ptr<std::thread> thread_;
-    
-    Frame frame_;
-    
-public:
-    MUEBReceiver(std::function<void(Frame)>&& callback);
-    ~MUEBReceiver();
-    void stop();
+class MUEBReceiver : public QObject {
+  Q_OBJECT
+
+  QUdpSocket socket_;
+  uint16_t port_;
+  Frame frame_;
+
+ public:
+  explicit MUEBReceiver(QObject *parent = nullptr, uint16_t port = 10000);
+
+ signals:
+  void frameChanged(Frame f);
+
+ public slots:
+  void readPendingDatagrams();
 };
+
+#endif  // MUEBRECEIVER_H
