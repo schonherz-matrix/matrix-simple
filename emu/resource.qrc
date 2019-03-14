@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sch.jpg</file>
+        <file>schviewcoords.txt</file>
+    </qresource>
+</RCC>
