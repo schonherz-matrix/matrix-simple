@@ -25,7 +25,7 @@ HEADERS = \
 
 SOURCES = \
    $$PWD/muebreceiver.cpp \
-   $$PWD/muebtransmitter.cpp \
+   $$PWD/muebtransmitter.cpp
 
 INCLUDEPATH = \
     $$PWD/.
