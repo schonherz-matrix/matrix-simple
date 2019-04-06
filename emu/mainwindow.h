@@ -1,9 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QImage>
 #include <QMainWindow>
-#include "frame.h"
 #include "muebreceiver.h"
 
 class MainWindow : public QMainWindow {
@@ -13,14 +11,14 @@ class MainWindow : public QMainWindow {
   explicit MainWindow(QWidget* parent = nullptr);
 
  public slots:
-  void updateFrame(const Frame& frame);
+  void updateFrame(QImage frame);
 
   // QWidget interface
  protected:
   void paintEvent(QPaintEvent* event) override;
 
  private:
-  Frame frame;
+  QImage frame;
   MUEBReceiver muebreceiver;
   QList<QPoint> coords;
   QImage schView;

@@ -3,21 +3,20 @@
 
 #include <QObject>
 #include <QUdpSocket>
-
-#include "../common/frame.h"
+#include <QImage>
 
 class MUEBReceiver : public QObject {
   Q_OBJECT
 
   QUdpSocket socket_;
   uint16_t port_;
-  Frame frame_;
+  QImage frame_;
 
  public:
   explicit MUEBReceiver(QObject *parent = nullptr, uint16_t port = 10000);
 
  signals:
-  void frameChanged(Frame f);
+  void frameChanged(QImage f);
 
  public slots:
   void readPendingDatagrams();

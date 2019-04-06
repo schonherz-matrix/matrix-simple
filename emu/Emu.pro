@@ -17,7 +17,7 @@ win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../mueb/release/ -lmueb
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../mueb/debug/ -lmueb
 else:unix: LIBS += -L$$PWD/../mueb/ -lmueb
 
-INCLUDEPATH += $$PWD/../mueb $$PWD/../common
+INCLUDEPATH += $$PWD/../mueb
 DEPENDPATH += $$PWD/../mueb
 
 win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../mueb/release/libmueb.a

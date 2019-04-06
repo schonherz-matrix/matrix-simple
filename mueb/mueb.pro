@@ -16,19 +16,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-QT       += network core
-QT       -= gui
+QT       += network gui
 
-HEADERS = \
-   $$PWD/muebreceiver.h \
-   $$PWD/muebtransmitter.h
+HEADERS += \
+        muebreceiver.h \
+        muebtransmitter.h
 
-SOURCES = \
-   $$PWD/muebreceiver.cpp \
-   $$PWD/muebtransmitter.cpp
-
-INCLUDEPATH = \
-    $$PWD/.
+SOURCES += \
+        muebreceiver.cpp \
+        muebtransmitter.cpp
 
 unix {
     target.path = /usr/lib

@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QString>
 #include <QUdpSocket>
-#include "../common/frame.h"
+#include <QImage>
 
 class MUEBTransmitter : public QObject {
   Q_OBJECT
@@ -18,7 +18,7 @@ class MUEBTransmitter : public QObject {
                            QString addr = "10.6.255.255",
                            uint16_t port = 10000);
  public slots:
-  void sendFrame(Frame frame);
+  void sendFrame(QImage frame);
 };
 
 #endif  // MUEBTRANSMITTER_H
