@@ -1,36 +1,31 @@
 #ifndef DRAW_SENDER_H_INCLUDED
 #define DRAW_SENDER_H_INCLUDED
 
-#include "timer.h"
-#include "frame.h"
-#include "color.h"
-#include "muebtransmitter.h"
-#include <string>
-#include <mutex>
-#include <memory>
-#include <QObject>
 #include <QColor>
+#include <QObject>
+#include <string>
+#include "muebtransmitter.h"
 
 class AnimInterface {
-	public:
-		virtual Frame nextFrame() = 0;
-		virtual ~AnimInterface();
+ public:
+  virtual QImage nextFrame() = 0;
 };
 
-class AnimSender: public QObject {
-	Q_OBJECT
-	private:
-		std::unique_ptr<AnimInterface> anim_;
-		std::unique_ptr<Timer> timer_;
-		std::mutex m_;
-        
-        MUEBTransmitter transmitter_;
-		void packetCallback();
-	public:
-		AnimSender();
-		virtual ~AnimSender();
-	public slots:
-		void setAnim(AnimInterface* anim);
+class AnimSender : public QObject {
+  Q_OBJECT
+
+ public:
+  AnimSender(QObject* parent = nullptr);
+ public slots:
+  void setAnim(AnimInterface* anim);
+
+ private:
+  std::unique_ptr<AnimInterface> anim_;
+  MUEBTransmitter transmitter_;
+
+  // QObject interface
+ protected:
+  void timerEvent(QTimerEvent* event) override;
 };
 
 #endif

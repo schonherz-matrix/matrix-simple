@@ -1,35 +1,18 @@
 #include "animsender.h"
-#include "array2D.hpp"
-#include <thread>
-#include <cmath>
-#include <QPoint>
 #include <QDebug>
+#include <QPoint>
+#include <cmath>
 
-AnimInterface::~AnimInterface() {}
-
-AnimSender::AnimSender() {
-	timer_ = std::unique_ptr<Timer>{new Timer(std::bind(&AnimSender::packetCallback, this), std::chrono::milliseconds(50))};
-	timer_->start();
-}
-
-AnimSender::~AnimSender() {
-	timer_->stop();
-}
+AnimSender::AnimSender(QObject* parent) : QObject(parent) { startTimer(50); }
 
 void AnimSender::setAnim(AnimInterface* anim) {
-	m_.lock();
-	anim_ = std::unique_ptr<AnimInterface>{anim};
-	m_.unlock();
+  anim_ = std::unique_ptr<AnimInterface>{anim};
 }
 
-void AnimSender::packetCallback() {
-	if (anim_) {
-		m_.lock();
-		Frame f;
-		f = anim_->nextFrame();
-		m_.unlock();
-		transmitter_.sendFrame(f);
-	}
+void AnimSender::timerEvent(QTimerEvent* event) {
+  if (anim_) {
+    QImage f(32, 26, QImage::Format_RGB888);
+    f = anim_->nextFrame();
+    transmitter_.sendFrame(f);
+  }
 }
-
-

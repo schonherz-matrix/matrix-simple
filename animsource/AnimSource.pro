@@ -10,8 +10,8 @@ QT += core gui widgets network
 #QMAKE_LFLAGS += -lm
 
 # Input
-HEADERS += animsender.h animfactory.h mainwindow.h timer.h chessanim.h verticalanim.h solidanim.h
-SOURCES += main.cpp animsender.cpp animfactory.cpp mainwindow.cpp timer.cpp chessanim.cpp verticalanim.cpp solidanim.cpp
+HEADERS += animsender.h animfactory.h mainwindow.h chessanim.h verticalanim.h solidanim.h
+SOURCES += main.cpp animsender.cpp animfactory.cpp mainwindow.cpp chessanim.cpp verticalanim.cpp solidanim.cpp
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../mueb/release/ -lmueb
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../mueb/debug/ -lmueb

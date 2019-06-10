@@ -1,24 +1,23 @@
 #ifndef VERTICALANIM_H
 #define VERTICALANIM_H
 
-
-#include "animsender.h"
-#include "frame.h"
-#include "color.h"
 #include <QColor>
+#include "animsender.h"
 
-class VerticalAnim: public AnimInterface {
-    private:
-        Color primary_color_, secondary_color_;
-        int num_;
-        int height;
-        int width;
-        int i_;
-        bool is_vertical_;
-        Frame frame_;
-    public:
-        VerticalAnim(const QColor& primary_color, const QColor& secondary_color, int num, bool is_vertical);
-        Frame nextFrame() override;
+class VerticalAnim : public AnimInterface {
+ private:
+  QColor primary_color_, secondary_color_;
+  int num_;
+  int height;
+  int width;
+  int i_;
+  bool is_vertical_;
+  QImage frame_;
+
+ public:
+  VerticalAnim(const QColor& primary_color, const QColor& secondary_color,
+               int num, bool is_vertical);
+  QImage nextFrame() override;
 };
 
-#endif // VERTICALANIM_H
+#endif  // VERTICALANIM_H
