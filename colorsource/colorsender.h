@@ -1,31 +1,21 @@
 #ifndef COLOR_SENDER_H_INCLUDED
 #define COLOR_SENDER_H_INCLUDED
 
-#include "timer.h"
-#include "frame.h"
-#include "color.h"
-#include "muebtransmitter.h"
-#include <mutex>
-#include <memory>
-#include <QObject>
 #include <QColor>
+#include <QObject>
+#include "muebtransmitter.h"
 
+class ColorSender : public QObject {
+  Q_OBJECT
 
-class ColorSender: public QObject {
-	Q_OBJECT
-	
-	private:
-		QColor color_;
-		std::mutex m_;
-		std::unique_ptr<Timer> timer_;
-        
-        MUEBTransmitter transmitter_;
-		void packetCallback();
-	public slots:
-		void setColor(const QColor& color);
-	public:
-		ColorSender();
-		virtual ~ColorSender();
+  QColor color_;
+  MUEBTransmitter transmitter_;
+
+ public:
+  ColorSender(QObject* parent = nullptr);
+
+ public slots:
+  void setColor(const QColor& color);
 };
 
 #endif

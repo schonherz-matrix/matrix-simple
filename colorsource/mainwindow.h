@@ -1,21 +1,19 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "colorsender.h"
-#include <memory>
-#include <QMainWindow>
 #include <QColorDialog>
+#include <QMainWindow>
+#include "colorsender.h"
 
 class MainWindow : public QMainWindow {
-    Q_OBJECT
+  Q_OBJECT
 
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+ public:
+  explicit MainWindow(QWidget *parent = nullptr);
 
-private:
-	std::unique_ptr<QColorDialog> colorDialog;
-    std::unique_ptr<ColorSender> colorSender;
+ private:
+  QColorDialog colorDialog;
+  ColorSender colorSender;
 };
 
-#endif // MAINWINDOW_H
+#endif  // MAINWINDOW_H

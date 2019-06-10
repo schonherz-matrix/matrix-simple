@@ -10,8 +10,8 @@ QT += core gui widgets network
 #QMAKE_LFLAGS += -lm
 
 # Input
-HEADERS += colorsender.h mainwindow.h timer.h
-SOURCES += main.cpp colorsender.cpp mainwindow.cpp timer.cpp
+HEADERS += colorsender.h mainwindow.h
+SOURCES += main.cpp colorsender.cpp mainwindow.cpp
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../mueb/release/ -lmueb
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../mueb/debug/ -lmueb

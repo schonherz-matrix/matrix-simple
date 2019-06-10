@@ -1,30 +1,22 @@
 #include "mainwindow.h"
-#include "colorsender.h"
-#include <QMainWindow>
 #include <QColorDialog>
+#include <QMainWindow>
+#include "colorsender.h"
 
-MainWindow::MainWindow(QWidget *parent): QMainWindow{parent} {
-	/* Setting geometry */
-	setGeometry(250, 250, 600, 400);
-	
-	/* Initalize members */
-	colorDialog = std::unique_ptr<QColorDialog>{new QColorDialog{this}};
-	colorSender = std::unique_ptr<ColorSender>{new ColorSender{}};
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow{parent}, colorDialog(this), colorSender(this) {
+  /* Setting geometry */
+  setGeometry(250, 250, 600, 400);
 
-	/* Setting ColorDialog as central widget */
-    setCentralWidget(colorDialog.get());
-    
-    /* Act as widget, not as a dialog */
-    colorDialog->setWindowFlags(Qt::Widget);
-    colorDialog->setOptions(
-		  QColorDialog::DontUseNativeDialog
-		| QColorDialog::NoButtons
-    );
+  /* Setting ColorDialog as central widget */
+  setCentralWidget(&colorDialog);
 
-	/* View -> Controller signals */
-    connect(colorDialog.get(), &QColorDialog::currentColorChanged, colorSender.get(), &ColorSender::setColor);  
-}
+  /* Act as widget, not as a dialog */
+  colorDialog.setWindowFlags(Qt::Widget);
+  colorDialog.setOptions(QColorDialog::DontUseNativeDialog |
+                         QColorDialog::NoButtons);
 
-MainWindow::~MainWindow(){
-
+  /* View -> Controller signals */
+  connect(&colorDialog, &QColorDialog::currentColorChanged, &colorSender,
+          &ColorSender::setColor);
 }
