@@ -10,8 +10,8 @@ QT += core gui widgets network
 #QMAKE_LFLAGS += -lm
 
 # Input
-HEADERS += drawsender.h mainwindow.h griddrawer.h timer.h
-SOURCES += main.cpp drawsender.cpp mainwindow.cpp griddrawer.cpp timer.cpp
+HEADERS += drawsender.h mainwindow.h griddrawer.h
+SOURCES += main.cpp drawsender.cpp mainwindow.cpp griddrawer.cpp
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../mueb/release/ -lmueb
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../mueb/debug/ -lmueb
