@@ -1,29 +1,26 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "percentsender.h"
-#include <memory>
-#include <QMainWindow>
 #include <QColorDialog>
-#include <QHBoxLayout>
-#include <QGraphicsView>
-#include <QPushButton>
 #include <QComboBox>
+#include <QGraphicsView>
+#include <QHBoxLayout>
+#include <QMainWindow>
+#include <QPushButton>
 #include <QSpinBox>
+#include "percentsender.h"
 
 class MainWindow : public QMainWindow {
-    Q_OBJECT
+  Q_OBJECT
 
-	private:
-		QGraphicsView* centralWidget;
-		QHBoxLayout* layout;
-		QSpinBox* percentSpinBox;
-		PercentSender* percentSender;
+ private:
+  QGraphicsView* centralWidget;
+  QHBoxLayout* layout;
+  QSpinBox* percentSpinBox;
+  PercentSender percentSender;
 
-	public:
-		explicit MainWindow(QWidget* parent = nullptr);
-		~MainWindow();
-
+ public:
+  explicit MainWindow(QWidget* parent = nullptr);
 };
 
-#endif // MAINWINDOW_H
+#endif  // MAINWINDOW_H

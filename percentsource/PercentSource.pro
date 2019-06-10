@@ -10,8 +10,8 @@ QT += core gui widgets network
 #QMAKE_LFLAGS += -lm
 
 # Input
-HEADERS += percentsender.h mainwindow.h timer.h digits.h
-SOURCES += main.cpp percentsender.cpp mainwindow.cpp timer.cpp
+HEADERS += percentsender.h mainwindow.h digits.h
+SOURCES += main.cpp percentsender.cpp mainwindow.cpp
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../mueb/release/ -lmueb
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../mueb/debug/ -lmueb
