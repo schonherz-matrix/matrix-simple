@@ -1,21 +1,19 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "windowtestsender.h"
-#include <memory>
 #include <QMainWindow>
 #include <QSpinBox>
+#include "windowtestsender.h"
 
 class MainWindow : public QMainWindow {
-    Q_OBJECT
+  Q_OBJECT
 
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+ public:
+  explicit MainWindow(QWidget* parent = nullptr);
 
-private:
-    QSpinBox* numSpinBox;
-    std::unique_ptr<WindowTestSender> windowTestSender;
+ private:
+  QSpinBox* numSpinBox;
+  WindowTestSender windowTestSender;
 };
 
-#endif // MAINWINDOW_H
+#endif  // MAINWINDOW_H

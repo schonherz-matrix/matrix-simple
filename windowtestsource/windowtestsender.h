@@ -1,34 +1,29 @@
 #ifndef WINDOW_TEST_SENDER_H_INCLUDED
 #define WINDOW_TEST_SENDER_H_INCLUDED
 
-#include "timer.h"
-#include "frame.h"
-#include "color.h"
-#include "muebtransmitter.h"
-#include <mutex>
-#include <memory>
-#include <QObject>
 #include <QColor>
+#include <QObject>
+#include "muebtransmitter.h"
 
+class WindowTestSender : public QObject {
+  Q_OBJECT
 
-class WindowTestSender: public QObject {
-	Q_OBJECT
-	
-	private:
-		int speed_;
-        int countdown_;
-        int color_;
-        int window_;
-		std::mutex m_;
-		std::unique_ptr<Timer> timer_;
-        
-        MUEBTransmitter transmitter_;
-		void packetCallback();
-	public slots:
-		void setSpeed(int speed);
-	public:
-		WindowTestSender();
-		virtual ~WindowTestSender();
+ public:
+  explicit WindowTestSender(QObject *parent = nullptr);
+ public slots:
+  void setSpeed(int speed);
+
+ private:
+  int speed_;
+  int countdown_;
+  int color_;
+  int window_;
+  MUEBTransmitter transmitter_;
+  int timerID;
+
+  // QObject interface
+ protected:
+  void timerEvent(QTimerEvent *event) override;
 };
 
 #endif
