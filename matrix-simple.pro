@@ -1,11 +1,11 @@
 TEMPLATE = subdirs
 
 SUBDIRS = \
+mueb \
 animsource \
 colorsource \
 drawsource \
 emu \
 matrixsource \
-mueb \
 percentsource \
-windowtestsource \
+windowtestsource
