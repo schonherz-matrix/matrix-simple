@@ -1,6 +1,6 @@
 #pragma once
 
-#include "color.h"
+#include <QColor>
 
 
 class PlayerFrame {
@@ -15,13 +15,13 @@ public:
     PlayerFrame& operator=(const PlayerFrame& other);
     PlayerFrame& operator=(PlayerFrame&& other);  
     
-    Color& operator()(size_t x, size_t y);
-    const Color& operator()(size_t x, size_t y) const;
+    QColor& operator()(size_t x, size_t y);
+    const QColor& operator()(size_t x, size_t y) const;
     
     void resize(size_t width, size_t height);
     size_t width() const;
     size_t height() const;
 private:   
-    Color* data;   
+    QColor* data;
     size_t width_, height_;
 };

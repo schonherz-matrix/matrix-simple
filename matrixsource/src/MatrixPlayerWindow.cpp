@@ -400,11 +400,7 @@ void MatrixPlayerWindow::displayFrame(const PlayerFrame& frame) {
     
     for (int x = 0; x<width; x++) {
         for (int y = 0; y<height; y++) {
-            image.setPixel(x,y,QColor(
-                                frame(x, y).r,
-                                frame(x, y).g,
-                                frame(x, y).b   
-                           ).rgb());
+            image.setPixelColor(x, y, frame(x, y));
         }
     }
   

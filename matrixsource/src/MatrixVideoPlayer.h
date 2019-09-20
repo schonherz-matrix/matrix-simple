@@ -1,9 +1,6 @@
 #pragma once
 
-//#include "matrix.h"
-
-#include "frame.h"
-#include "color.h"
+#include <QColor>
 
 #include "PlayerFrame.h"
 

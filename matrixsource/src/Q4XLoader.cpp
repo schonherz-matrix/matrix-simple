@@ -125,9 +125,9 @@ bool Q4XLoader::load(std::string file) {
     while (index + height*width*3 + 4 < qpr.size()) {
         for (int x=0; x<width; x++) {
             for (int y=0; y<height; y++) {
-                frame(x, y).r = qpr[index + 3*(x + y*width) + 0];
-                frame(x, y).g = qpr[index + 3*(x + y*width) + 1];
-                frame(x, y).b = qpr[index + 3*(x + y*width) + 2];
+                frame(x, y).setRed(qpr[index + 3*(x + y*width) + 0]);
+                frame(x, y).setGreen(qpr[index + 3*(x + y*width) + 1]);
+                frame(x, y).setBlue(qpr[index + 3*(x + y*width) + 2]);
             }
         }
         index += height*width*3;

@@ -1,8 +1,5 @@
 #pragma once
 
-#include "frame.h"
-#include "color.h"
-
 #include "PlayerFrame.h"
 
 #include <vector>

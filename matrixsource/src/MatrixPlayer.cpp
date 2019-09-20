@@ -6,6 +6,7 @@
 #include <iostream>
 #include <chrono>
 #include <cmath>
+#include <QImage>
 
 
 using namespace std;
@@ -20,14 +21,12 @@ MatrixPlayer::MatrixPlayer() : videoListener(*this), audioListener(*this) {
            
         // set presentation method
         videoPlayer.PresentFrame = [this](const PlayerFrame& frame) {
-            Frame sf;
-            sf.pixels.resize(frame.width(), frame.height());
+        QImage sf(frame.width(), frame.height(), QImage::Format_RGB888);
             for (size_t x = 0; x<frame.width(); x++) {
                 for (size_t y = 0; y<frame.height(); y++) {
-                    sf.pixels(x,y) = frame(x,y);
+                    sf.setPixelColor(x, y, frame(x,y));
                 }            
             }
-            sf.id = 0;
             transmitter.sendFrame(sf);
         };
 }
