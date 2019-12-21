@@ -10,3 +10,6 @@
 [submodule "drawsource"]
 	path = drawsource
 	url = https://git.sch.bme.hu/matrix-group/drawsource.git
+[submodule "animsource"]
+	path = animsource
+	url = https://git.sch.bme.hu/matrix-group/animsource.git
