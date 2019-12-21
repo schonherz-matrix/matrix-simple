@@ -120,14 +120,11 @@ bool Q4XLoader::load(std::string file) {
     }
     ++index;
     
-    PlayerFrame frame;
-    frame.resize(width, height);
+    QImage frame(width, height, QImage::Format_RGB888);
     while (index + height*width*3 + 4 < qpr.size()) {
         for (int x=0; x<width; x++) {
             for (int y=0; y<height; y++) {
-                frame(x, y).setRed(qpr[index + 3*(x + y*width) + 0]);
-                frame(x, y).setGreen(qpr[index + 3*(x + y*width) + 1]);
-                frame(x, y).setBlue(qpr[index + 3*(x + y*width) + 2]);
+                frame.setPixelColor(x, y, QColor(qpr[index + 3*(x + y*width) + 0], qpr[index + 3*(x + y*width) + 1], qpr[index + 3*(x + y*width) + 2]));
             }
         }
         index += height*width*3;
@@ -195,7 +192,7 @@ void Q4XLoader::clear() {
     originalFrames.clear();
 }
 
-const std::vector<PlayerFrame>& Q4XLoader::getFrames() const {
+const std::vector<QImage>& Q4XLoader::getFrames() const {
     if (isResampled) {
         return resampledFrames;
     }

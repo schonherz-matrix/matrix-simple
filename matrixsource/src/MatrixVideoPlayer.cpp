@@ -100,7 +100,7 @@ bool MatrixVideoPlayer::load(std::string filePath) {
     return true;
 }
 
-bool MatrixVideoPlayer::load(const PlayerFrame* frames, size_t numFrames, std::chrono::microseconds(frameTime)) {
+bool MatrixVideoPlayer::load(const QImage* frames, size_t numFrames, std::chrono::microseconds(frameTime)) {
     if (numFrames > 0) {
         clear();
         width_ = frames[0].width();
@@ -280,7 +280,7 @@ void MatrixVideoPlayer::notifyListenersTrackEnd() {
     }
 }
 
-void MatrixVideoPlayer::notifyListenersFrame(const PlayerFrame& frame) {
+void MatrixVideoPlayer::notifyListenersFrame(const QImage& frame) {
     for (auto listener : listeners) {
         listener->onFrameChanged(frame);
     }

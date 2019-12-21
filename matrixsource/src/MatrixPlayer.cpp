@@ -20,14 +20,8 @@ MatrixPlayer::MatrixPlayer() : videoListener(*this), audioListener(*this) {
     
            
         // set presentation method
-        videoPlayer.PresentFrame = [this](const PlayerFrame& frame) {
-        QImage sf(frame.width(), frame.height(), QImage::Format_RGB888);
-            for (size_t x = 0; x<frame.width(); x++) {
-                for (size_t y = 0; y<frame.height(); y++) {
-                    sf.setPixelColor(x, y, frame(x,y));
-                }            
-            }
-            transmitter.sendFrame(sf);
+        videoPlayer.PresentFrame = [this](const QImage& frame) {
+            transmitter.sendFrame(frame);
         };
 }
 
@@ -158,7 +152,7 @@ void MatrixPlayer::notifyListenersTrackEnd() {
     }    
 }
 
-void MatrixPlayer::notifyListenersFrame(const PlayerFrame& frame) {
+void MatrixPlayer::notifyListenersFrame(const QImage& frame) {
     for (auto listener : listeners) {
         listener->onFrameChanged(frame);
     }
@@ -203,7 +197,7 @@ void MatrixPlayer::VideoListener::onTimeChanged(double time) {
 }
 
 
-void MatrixPlayer::VideoListener::onFrameChanged(const PlayerFrame& frame) {
+void MatrixPlayer::VideoListener::onFrameChanged(const QImage& frame) {
     parent.notifyListenersFrame(frame);
 }
 

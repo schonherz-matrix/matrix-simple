@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PlayerFrame.h"
+#include <QImage>
 
 #include <vector>
 #include <chrono>
@@ -25,17 +25,17 @@ public:
     
     void clear();
 
-    const std::vector<PlayerFrame>& getFrames() const;
+    const std::vector<QImage> &getFrames() const;
     std::chrono::microseconds getFrameTime() const;
     
     const void* getSoundData() const;
     size_t getSoundDataSize() const;
 private:    
     std::chrono::microseconds originalFrameTime;
-    std::vector<PlayerFrame> originalFrames;
+    std::vector<QImage> originalFrames;
     bool isResampled;
     std::chrono::microseconds resampledFrameTime;
-    std::vector<PlayerFrame> resampledFrames;
+    std::vector<QImage> resampledFrames;
     
     size_t width_, height_;
     
@@ -76,9 +76,8 @@ void Q4XLoader::resample(std::chrono::duration<Rep, Period> frameTime) {
     
     // Add one blank black frame
     {
-        PlayerFrame lastFrame = resampledFrames.back();
-        PlayerFrame blankFrame;
-        blankFrame.resize(lastFrame.width(), lastFrame.height());
+        QImage lastFrame = resampledFrames.back();
+        QImage blankFrame(lastFrame.width(), lastFrame.height(), QImage::Format_RGB888);
         resampledFrames.push_back(blankFrame);
     }
 }

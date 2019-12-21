@@ -1,8 +1,7 @@
 #pragma once
 
 #include <QColor>
-
-#include "PlayerFrame.h"
+#include <QImage>
 
 #include <string>
 #include <chrono>
@@ -61,13 +60,13 @@ public:
     // --- Input data --- //
 
     bool load(std::string filePath);
-    bool load(const PlayerFrame* frames, size_t numFrames, std::chrono::microseconds(frameTime));
+    bool load(const QImage* frames, size_t numFrames, std::chrono::microseconds(frameTime));
     bool debugLoad(size_t numFrames);
     void debugSetFrameTime(double timeSec);
     void clear();
     
     // --- Present frame to daemon --- //
-    std::function<void(const PlayerFrame&)> PresentFrame;
+    std::function<void(const QImage&)> PresentFrame;
 
 private:
     void displayThreadFunc();
@@ -75,7 +74,7 @@ private:
     void notifyListenersState(eState state);
     void notifyListenersTime(double time);
     void notifyListenersTrackEnd();
-    void notifyListenersFrame(const PlayerFrame& frame);
+    void notifyListenersFrame(const QImage& frame);
 
 private:
     size_t currentFrame; // tells which frame is currently being displayed
@@ -87,7 +86,7 @@ private:
 
     std::atomic<eState> state; // current state of the player
 
-    std::vector<PlayerFrame> frames; // buffer containing all the frames
+    std::vector<QImage> frames; // buffer containing all the frames
     std::chrono::microseconds frameTime; // how much time there's between 2 frames
     size_t width_ = 0, height_ = 0;
     
@@ -153,7 +152,7 @@ class MatrixVideoPlayerListener {
 public:
     virtual void onStateChanged(MatrixVideoPlayer::eState) = 0;
     virtual void onTimeChanged(double time) = 0;
-    virtual void onFrameChanged(const PlayerFrame& frame) = 0;
+    virtual void onFrameChanged(const QImage& frame) = 0;
     virtual void onTrackEnded() = 0;
 };
 

@@ -26,7 +26,7 @@ public:
     PlayerListener(MatrixPlayerWindow& parent);
     void onStateChanged(MatrixPlayer::eState) override;
     void onTimeChanged(double time) override;
-    void onFrameChanged(const PlayerFrame& frame) override;
+    void onFrameChanged(const QImage& frame) override;
     void onTrackEnded() override;
 private:
     MatrixPlayerWindow& parent;
@@ -89,9 +89,9 @@ private:
     QGraphicsScene* graphicsScene;
     PlayerListener playerListener;
     
-    PlayerFrame currentFrame;
+    QImage currentFrame;
     std::mutex frameMutex;
-    void displayFrame(const PlayerFrame& frame);
+    void displayFrame(const QImage& frame);
     std::atomic_bool newFrame;
 };
 

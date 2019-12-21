@@ -23,7 +23,7 @@ class MatrixPlayer {
         VideoListener(MatrixPlayer& parent) : parent(parent) {};
         void onStateChanged(MatrixVideoPlayer::eState) override;
         void onTimeChanged(double time) override;
-        void onFrameChanged(const PlayerFrame& frame) override;
+        void onFrameChanged(const QImage& frame) override;
         void onTrackEnded() override;
     private:
         MatrixPlayer& parent;
@@ -84,7 +84,7 @@ private:
     void notifyListenersState(eState state);
     void notifyListenersTime(double time);
     void notifyListenersTrackEnd();
-    void notifyListenersFrame(const PlayerFrame& frame);
+    void notifyListenersFrame(const QImage& frame);
     volatile bool videoEndedFlag;
     volatile bool audioEndedFlag;
     
@@ -102,7 +102,7 @@ private:
     
     std::set<MatrixPlayerListener*> listeners;
     
-    MUEBTransmitter transmitter;
+    MuebTransmitter transmitter;
 };
 
 
@@ -125,6 +125,6 @@ class MatrixPlayerListener {
 public:
     virtual void onStateChanged(MatrixPlayer::eState) = 0;
     virtual void onTimeChanged(double time) = 0;
-    virtual void onFrameChanged(const PlayerFrame& frame) = 0;
+    virtual void onFrameChanged(const QImage& frame) = 0;
     virtual void onTrackEnded() = 0;
 };

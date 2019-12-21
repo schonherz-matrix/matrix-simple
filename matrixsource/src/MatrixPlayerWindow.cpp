@@ -385,7 +385,7 @@ void PlayerListener::onTimeChanged(double time) {
     // no action
 }
 
-void PlayerListener::onFrameChanged(const PlayerFrame& frame) {
+void PlayerListener::onFrameChanged(const QImage& frame) {
     lock_guard<mutex>(parent.frameMutex);
     parent.currentFrame = frame;
     parent.newFrame = true;
@@ -393,17 +393,9 @@ void PlayerListener::onFrameChanged(const PlayerFrame& frame) {
 
 
 
-void MatrixPlayerWindow::displayFrame(const PlayerFrame& frame) {
+void MatrixPlayerWindow::displayFrame(const QImage& frame) {
     size_t width = matrixPlayer.width(),
             height = matrixPlayer.height();
-    QImage image(width, height, QImage::Format_RGB888);
-    
-    for (int x = 0; x<width; x++) {
-        for (int y = 0; y<height; y++) {
-            image.setPixelColor(x, y, frame(x, y));
-        }
-    }
-  
     
     float scale;
     int frameWidth = ui->frameView->width();
@@ -418,7 +410,7 @@ void MatrixPlayerWindow::displayFrame(const PlayerFrame& frame) {
         0, 0, 1                                    
         ));
     graphicsScene->clear();
-    QPixmap pixmap = QPixmap::fromImage(image);
+    QPixmap pixmap = QPixmap::fromImage(frame);
     graphicsScene->addPixmap(pixmap);   
 
 }
