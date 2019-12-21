@@ -22,7 +22,7 @@ class DrawSender : public QObject {
  private:
   QColor color_;
   QImage frame_;
-  MUEBTransmitter transmitter_;
+  MuebTransmitter transmitter_;
 };
 
 #endif

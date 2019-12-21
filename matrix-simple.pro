@@ -1,7 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS = \
-mueb \
+libmueb \
 animsource \
 colorsource \
 drawsource \

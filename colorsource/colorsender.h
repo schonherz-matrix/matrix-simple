@@ -9,7 +9,7 @@ class ColorSender : public QObject {
   Q_OBJECT
 
   QColor color_;
-  MUEBTransmitter transmitter_;
+  MuebTransmitter transmitter_;
 
  public:
   ColorSender(QObject* parent = nullptr);

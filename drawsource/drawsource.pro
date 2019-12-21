@@ -9,19 +9,15 @@ QT += core gui widgets network
 #QMAKE_CXXFLAGS += -std=c++11 -Wall -Wno-narrowing -pedantic -O3 -g
 #QMAKE_LFLAGS += -lm
 
+CONFIG += c++17
+
 # Input
 HEADERS += drawsender.h mainwindow.h griddrawer.h
 SOURCES += main.cpp drawsender.cpp mainwindow.cpp griddrawer.cpp
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../mueb/release/ -lmueb
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../mueb/debug/ -lmueb
-else:unix: LIBS += -L$$PWD/../mueb/ -lmueb
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../libmueb/release/ -lmueb
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../libmueb/debug/ -lmueb
+else:unix: LIBS += -L$$OUT_PWD/../libmueb/ -lmueb
 
-INCLUDEPATH += $$PWD/../mueb $$PWD/../common
-DEPENDPATH += $$PWD/../mueb
-
-win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../mueb/release/libmueb.a
-else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../mueb/debug/libmueb.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../mueb/release/mueb.lib
-else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../mueb/debug/mueb.lib
-else:unix: PRE_TARGETDEPS += $$PWD/../mueb/libmueb.a
+INCLUDEPATH += $$PWD/../libmueb/include/libmueb
+DEPENDPATH += $$PWD/../libmueb/include/libmueb

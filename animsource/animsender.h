@@ -21,7 +21,7 @@ class AnimSender : public QObject {
 
  private:
   std::unique_ptr<AnimInterface> anim_;
-  MUEBTransmitter transmitter_;
+  MuebTransmitter transmitter_;
 
   // QObject interface
  protected:

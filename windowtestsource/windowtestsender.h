@@ -18,7 +18,7 @@ class WindowTestSender : public QObject {
   int countdown_;
   int color_;
   int window_;
-  MUEBTransmitter transmitter_;
+  MuebTransmitter transmitter_;
   int timerID;
 
   // QObject interface
