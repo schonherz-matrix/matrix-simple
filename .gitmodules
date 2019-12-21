@@ -1,3 +1,6 @@
 [submodule "libmueb"]
 	path = libmueb
 	url = https://git.sch.bme.hu/matrix-group/libmueb.git
+[submodule "emu"]
+	path = emu
+	url = https://git.sch.bme.hu/matrix-group/emu
