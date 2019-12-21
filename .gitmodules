@@ -7,3 +7,6 @@
 [submodule "colorsource"]
 	path = colorsource
 	url = https://git.sch.bme.hu/matrix-group/colorsource.git
+[submodule "drawsource"]
+	path = drawsource
+	url = https://git.sch.bme.hu/matrix-group/drawsource.git
