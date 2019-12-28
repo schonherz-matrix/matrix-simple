@@ -1,15 +1,20 @@
 [submodule "libmueb"]
 	path = libmueb
 	url = https://git.sch.bme.hu/matrix-group/libmueb.git
+	branch = master
 [submodule "emu"]
 	path = emu
-	url = https://git.sch.bme.hu/matrix-group/emu
+	url = https://git.sch.bme.hu/matrix-group/emu.git
+	branch = master
 [submodule "colorsource"]
 	path = colorsource
 	url = https://git.sch.bme.hu/matrix-group/colorsource.git
+	branch = master
 [submodule "drawsource"]
 	path = drawsource
 	url = https://git.sch.bme.hu/matrix-group/drawsource.git
+	branch = master
 [submodule "animsource"]
 	path = animsource
 	url = https://git.sch.bme.hu/matrix-group/animsource.git
+	branch = master
