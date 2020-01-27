@@ -81,6 +81,7 @@ class MatrixPlayer {
   volatile bool videoEndedFlag;
   volatile bool audioEndedFlag;
 
+  MuebTransmitter transmitter;
   MatrixVideoPlayer videoPlayer;
   VideoListener videoListener;
   MatrixAudioPlayer audioPlayer;
@@ -94,8 +95,6 @@ class MatrixPlayer {
   mutable std::mutex subPlayerMutex;
 
   std::set<MatrixPlayerListener*> listeners;
-
-  MuebTransmitter transmitter;
 };
 
 template <class Rep, class Period>

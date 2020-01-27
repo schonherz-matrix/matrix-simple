@@ -126,24 +126,32 @@ void MatrixPlayer::removeListener(MatrixPlayerListener* listener) {
 }
 
 void MatrixPlayer::notifyListenersState(eState state) {
+  if (listeners.empty()) return;
+
   for (auto listener : listeners) {
     listener->onStateChanged(state);
   }
 }
 
 void MatrixPlayer::notifyListenersTime(double time) {
+  if (listeners.empty()) return;
+
   for (auto listener : listeners) {
     listener->onTimeChanged(time);
   }
 }
 
 void MatrixPlayer::notifyListenersTrackEnd() {
+  if (listeners.empty()) return;
+
   for (auto listener : listeners) {
     listener->onTrackEnded();
   }
 }
 
 void MatrixPlayer::notifyListenersFrame(const QImage& frame) {
+  if (listeners.empty()) return;
+
   for (auto listener : listeners) {
     listener->onFrameChanged(frame);
   }
