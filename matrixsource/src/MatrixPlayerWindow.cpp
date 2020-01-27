@@ -98,6 +98,19 @@ MatrixPlayerWindow::MatrixPlayerWindow(QWidget* parent)
   matrixPlayer.addListener(&playerListener);
 
   ui->volumeSlider->setValue(matrixPlayer.getVolume() * 100);
+
+  // Set button icons
+  ui->buttonPrevTrack->setIcon(
+      style()->standardIcon(QStyle::SP_MediaSkipBackward));
+  ui->buttonStop->setIcon(style()->standardIcon(QStyle::SP_MediaStop));
+  ui->buttonPlay->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
+  ui->buttonNextTrack->setIcon(
+      style()->standardIcon(QStyle::SP_MediaSkipForward));
+
+  ui->buttonPrevTrack->setText("");
+  ui->buttonStop->setText("");
+  ui->buttonPlay->setText("");
+  ui->buttonNextTrack->setText("");
 }
 
 MatrixPlayerWindow::~MatrixPlayerWindow() {
@@ -157,7 +170,7 @@ void MatrixPlayerWindow::on_buttonClearMedia_clicked() {
   matrixPlayer.clear();
   ui->playlistView->clear();
   currentMedia = nullptr;
-  ui->buttonPlay->setText("\u25B6");
+  ui->buttonPlay->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
 }
 
 void MatrixPlayerWindow::on_buttonPlay_clicked() {
@@ -200,16 +213,16 @@ void MatrixPlayerWindow::on_buttonPlay_clicked() {
   }
 
   if (matrixPlayer.getState() == MatrixPlayer::PLAYING) {
-    ui->buttonPlay->setText("||");
+    ui->buttonPlay->setIcon(style()->standardIcon(QStyle::SP_MediaPause));
   } else {
-    ui->buttonPlay->setText("\u25B6");
+    ui->buttonPlay->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
   }
 }
 
 void MatrixPlayerWindow::on_buttonStop_clicked() {
   lock_guard<recursive_mutex> lk(matrixPlayerMutex);
   matrixPlayer.stop();
-  ui->buttonPlay->setText("\u25B6");
+  ui->buttonPlay->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
 }
 
 void MatrixPlayerWindow::on_updateTimeIndicator() {
@@ -261,7 +274,7 @@ void MatrixPlayerWindow::on_trackEnded() {
   if ((ui->playlistView->count() > 0 &&
        ui->playlistView->item(0) == currentMedia) ||
       !autoplay || isBreakpointHit) {
-    ui->buttonPlay->setText("\u25B6");
+    ui->buttonPlay->setIcon(style()->standardIcon(QStyle::SP_MediaPlay));
   } else {
     on_buttonPlay_clicked();
   }
