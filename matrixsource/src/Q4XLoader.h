@@ -77,6 +77,7 @@ void Q4XLoader::resample(std::chrono::duration<Rep, Period> frameTime) {
     QImage lastFrame = resampledFrames.back();
     QImage blankFrame(lastFrame.width(), lastFrame.height(),
                       QImage::Format_RGB888);
+    blankFrame.fill(Qt::black);
     resampledFrames.push_back(blankFrame);
   }
 }
