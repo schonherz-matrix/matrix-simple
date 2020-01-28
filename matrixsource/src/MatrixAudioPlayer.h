@@ -2,11 +2,11 @@
 
 #include <atomic>
 #include <chrono>
+#include <fmod.hpp>
 #include <memory>
 #include <mutex>
 #include <set>
 #include <thread>
-#include "fmod.hpp"
 
 class MatrixAudioPlayerListener;
 
