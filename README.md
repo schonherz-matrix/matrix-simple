@@ -3,6 +3,8 @@
 Schönherz Mátrix super module
 
 ## Prerequisites
+**FMOD** matrixsource dependency, check matrixsource\fmod\README.txt for details
+
 Qt **5.12**(LTS) or above is recommended
 
 **C++ 17** compatible compiler
