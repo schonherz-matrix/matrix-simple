@@ -63,3 +63,5 @@ compile_commands.json
 # debug, release
 debug/
 release/
+
+build
