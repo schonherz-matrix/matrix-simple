@@ -18,3 +18,7 @@
 	path = animsource
 	url = https://git.sch.bme.hu/matrix-group/animsource.git
 	branch = master
+[submodule "q4x-extractor"]
+	path = q4x-extractor
+	url = https://git.sch.bme.hu/matrix-group/q4x-extractor.git
+	branch = master
