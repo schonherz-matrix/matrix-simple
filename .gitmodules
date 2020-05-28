@@ -2,27 +2,34 @@
 	path = libmueb
 	url = https://git.sch.bme.hu/matrix-group/libmueb.git
 	branch = master
+	update = merge
 [submodule "emu"]
 	path = emu
 	url = https://git.sch.bme.hu/matrix-group/emu.git
 	branch = master
+	update = merge
 [submodule "colorsource"]
 	path = colorsource
 	url = https://git.sch.bme.hu/matrix-group/colorsource.git
 	branch = master
+	update = merge
 [submodule "drawsource"]
 	path = drawsource
 	url = https://git.sch.bme.hu/matrix-group/drawsource.git
 	branch = master
+	update = merge
 [submodule "animsource"]
 	path = animsource
 	url = https://git.sch.bme.hu/matrix-group/animsource.git
 	branch = master
+	update = merge
 [submodule "q4x-extractor"]
 	path = q4x-extractor
 	url = https://git.sch.bme.hu/matrix-group/q4x-extractor.git
 	branch = master
+	update = merge
 [submodule "matrixsource"]
 	path = matrixsource
 	url = https://git.sch.bme.hu/matrix-group/matrixsource.git
 	branch = master
+	update = merge
