@@ -30,7 +30,9 @@ bool Q4XLoader::load(std::string file) {
   if (!inputFile.read((char*)buffer.data(), 4)) {
     return false;
   }
-  if (string(buffer.data(), buffer.data() + 4) != "Q4X1") {
+
+  auto magic = string(buffer.data(), buffer.data() + 4);
+  if (magic != "Q4X1" && magic != "Q4X2") {
     cout << "Not Q4X." << endl;
     return false;
   }
