@@ -13,6 +13,7 @@ set(MATRIX_SIMPLE "")
 
 add_subdirectory(libmueb)
 add_subdirectory(emu)
+add_subdirectory(matrixsource)
 add_subdirectory(animsource)
 add_subdirectory(colorsource)
 add_subdirectory(drawsource)
