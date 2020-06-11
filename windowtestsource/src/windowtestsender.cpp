@@ -1,13 +1,14 @@
 #include "windowtestsender.h"
+
 #include <QDebug>
 
 WindowTestSender::WindowTestSender(QObject *parent)
     : QObject(parent),
+      m_transmitter(MuebTransmitter::getInstance()),
       speed_(1),
       countdown_(1),
       color_(0),
-      window_(0),
-      transmitter_(this) {
+      window_(0) {
   timerID = startTimer(50);
 }
 
@@ -55,5 +56,5 @@ void WindowTestSender::timerEvent(QTimerEvent *) {
   QImage frame(32, 26, QImage::Format_RGB888);
   frame.fill(Qt::black);
   frame.setPixelColor(x, y, rgb);
-  transmitter_.sendFrame(frame);
+  m_transmitter.sendFrame(frame);
 }

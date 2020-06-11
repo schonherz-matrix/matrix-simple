@@ -3,6 +3,7 @@
 
 #include <QColor>
 #include <QObject>
+
 #include "muebtransmitter.h"
 
 class WindowTestSender : public QObject {
@@ -14,11 +15,11 @@ class WindowTestSender : public QObject {
   void setSpeed(int speed);
 
  private:
+  MuebTransmitter &m_transmitter;
   int speed_;
   int countdown_;
   int color_;
   int window_;
-  MuebTransmitter transmitter_;
   int timerID;
 
   // QObject interface

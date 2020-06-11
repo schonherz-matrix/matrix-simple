@@ -1,13 +1,16 @@
 #include "percentsender.h"
+
 #include <QDebug>
 #include <QPoint>
 #include <QTimerEvent>
 #include <cmath>
 #include <thread>
+
 #include "digits.h"
 
 PercentSender::PercentSender(QObject *parent)
     : QObject(parent),
+      m_transmitter(MuebTransmitter::getInstance()),
       frame_(32, 26, QImage::Format_RGB888),
       percent_(0),
       flashCount_(0) {
@@ -83,7 +86,7 @@ void PercentSender::setPercent(int percent) {
 
 void PercentSender::timerEvent(QTimerEvent *event) {
   if (event->timerId() == timerID) {
-    transmitter_.sendFrame(frame_);
+    m_transmitter.sendFrame(frame_);
   } else {
     if (flashCount_ == 180) {
       for (int x = 16; x < 24; x++) {

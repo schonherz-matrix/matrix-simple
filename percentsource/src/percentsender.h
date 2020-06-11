@@ -4,6 +4,7 @@
 #include <QColor>
 #include <QObject>
 #include <string>
+
 #include "muebtransmitter.h"
 
 class PercentSender : public QObject {
@@ -15,10 +16,10 @@ class PercentSender : public QObject {
   void setPercent(int percent);
 
  private:
+  MuebTransmitter &m_transmitter;
   QImage frame_;
   int percent_;
   int flashCount_;
-  MuebTransmitter transmitter_;
   int timerID = 0;
   int flashID = 0;
 
