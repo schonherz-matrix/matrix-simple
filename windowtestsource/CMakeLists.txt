@@ -26,8 +26,9 @@ if(NOT DEFINED MATRIX_SIMPLE)
   find_package(libmueb 2.0 REQUIRED)
 endif()
 
-add_executable(${PROJECT_NAME} src/main.cpp src/mainwindow.cpp src/mainwindow.h
-                               src/windowtestsender.cpp src/windowtestsender.h)
+add_executable(
+  ${PROJECT_NAME} WIN32 src/main.cpp src/mainwindow.cpp src/mainwindow.h
+                        src/windowtestsender.cpp src/windowtestsender.h)
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt5::Widgets
                                               libmueb::muebtransmitter)
 
