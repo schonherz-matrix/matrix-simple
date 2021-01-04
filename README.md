@@ -14,6 +14,16 @@ Build tools for Qt(platform dependent):
 - **MSVC**(Desktop development with C++)/MinGW on **Windows**
 - **build-essential** on **Unix/Linux**
 
+## How to build
+
+Using Qt creator open CMakeLists.txt in the project root folder then build matrix-simple project
+
+Using command line in the project root folder
+
+```bash
+cmake -DCMAKE_BUILD_TYPE=Release -B build && cmake --build build
+```
+
 ## How to manage submodules
 
 Use the example bellow to add more submodules
@@ -26,15 +36,4 @@ Use the command bellow to update all submodules
 
 ```bash
 git submodule update --remote
-```
-
-## How to build
-
-Use Qt Creator **without shadow build**
-
-Using command line simply run
-
-```bash
-qmake
-make
 ```
