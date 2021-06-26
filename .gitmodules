@@ -1,35 +1,35 @@
 [submodule "libmueb"]
 	path = libmueb
-	url = git@git.sch.bme.hu:matrix-group/matrix-simple/libmueb.git
+	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/libmueb.git
 	branch = master
 	update = merge
 [submodule "emu"]
 	path = emu
-	url = git@git.sch.bme.hu:matrix-group/matrix-simple/emu.git
+	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/emu.git
 	branch = master
 	update = merge
 [submodule "colorsource"]
 	path = colorsource
-	url = git@git.sch.bme.hu:matrix-group/matrix-simple/colorsource.git
+	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/colorsource.git
 	branch = master
 	update = merge
 [submodule "drawsource"]
 	path = drawsource
-	url = git@git.sch.bme.hu:matrix-group/matrix-simple/drawsource.git
+	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/drawsource.git
 	branch = master
 	update = merge
 [submodule "animsource"]
 	path = animsource
-	url = git@git.sch.bme.hu:matrix-group/matrix-simple/animsource.git
+	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/animsource.git
 	branch = master
 	update = merge
 [submodule "q4x-extractor"]
 	path = q4x-extractor
-	url = git@git.sch.bme.hu:matrix-group/utils/q4x-extractor.git
+	url = git@git.sch.bme.hu:kszk/schmatrix/utils/q4x-extractor.git
 	branch = master
 	update = merge
 [submodule "matrixsource"]
 	path = matrixsource
-	url = git@git.sch.bme.hu:matrix-group/matrix-simple/matrixsource.git
+	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/matrixsource.git
 	branch = master
 	update = merge
