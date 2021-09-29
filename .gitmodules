@@ -33,3 +33,13 @@
 	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/matrixsource.git
 	branch = master
 	update = merge
+[submodule "screensaver"]
+	path = screensaver
+	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/screensaver.git
+	branch = master
+	update = merge
+[submodule "player"]
+	path = player
+	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/player.git
+	branch = master
+	update = merge
