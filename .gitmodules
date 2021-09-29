@@ -18,24 +18,18 @@
 	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/animsource.git
 	branch = master
 	update = merge
-[submodule "q4x-extractor"]
-	path = q4x-extractor
-	url = git@git.sch.bme.hu:kszk/schmatrix/utils/q4x-extractor.git
-	branch = master
-	update = merge
 [submodule "matrixsource"]
 	path = matrixsource
 	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/matrixsource.git
 	branch = master
 	update = merge
-[submodule "player"]
-	path = player
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/player.git
-[submodule "screensaver"]
-	path = screensaver
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/screensaver.git
 [submodule "libmueb-new"]
 	path = libmueb-new
 	url = git@git.sch.bme.hu:kszk/schmatrix/libmueb.git
 	branch = develop
+	update = merge
+[submodule "q4x-extractor"]
+	path = q4x-extractor
+	url = git@git.sch.bme.hu:kszk/schmatrix/utils/q4x-extractor.git
+	branch = master
 	update = merge
