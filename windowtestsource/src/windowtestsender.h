@@ -15,7 +15,7 @@ class WindowTestSender : public QObject {
   void setSpeed(int speed);
 
  private:
-  MuebTransmitter &m_transmitter;
+  libmueb::MuebTransmitter &transmitter_;
   int speed_;
   int countdown_;
   int color_;

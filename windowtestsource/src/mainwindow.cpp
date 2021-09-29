@@ -1,6 +1,8 @@
 #include "mainwindow.h"
+
 #include <QColorDialog>
 #include <QMainWindow>
+
 #include "windowtestsender.h"
 
 MainWindow::MainWindow(QWidget *parent)

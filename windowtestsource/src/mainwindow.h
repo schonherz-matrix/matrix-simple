@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSpinBox>
+
 #include "windowtestsender.h"
 
 class MainWindow : public QMainWindow {

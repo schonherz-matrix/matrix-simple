@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QSpinBox>
+
 #include "percentsender.h"
 
 class MainWindow : public QMainWindow {

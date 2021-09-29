@@ -16,7 +16,7 @@ class PercentSender : public QObject {
   void setPercent(int percent);
 
  private:
-  MuebTransmitter &m_transmitter;
+  libmueb::MuebTransmitter &transmitter_;
   QImage frame_;
   int percent_;
   int flashCount_;

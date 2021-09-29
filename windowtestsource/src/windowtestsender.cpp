@@ -4,7 +4,7 @@
 
 WindowTestSender::WindowTestSender(QObject *parent)
     : QObject(parent),
-      m_transmitter(MuebTransmitter::getInstance()),
+      transmitter_(libmueb::MuebTransmitter::Instance()),
       speed_(1),
       countdown_(1),
       color_(0),
@@ -56,5 +56,5 @@ void WindowTestSender::timerEvent(QTimerEvent *) {
   QImage frame(32, 26, QImage::Format_RGB888);
   frame.fill(Qt::black);
   frame.setPixelColor(x, y, rgb);
-  m_transmitter.sendFrame(frame);
+  transmitter_.SendFrame(frame);
 }

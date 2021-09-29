@@ -1,8 +1,3 @@
-[submodule "libmueb"]
-	path = libmueb
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/libmueb.git
-	branch = master
-	update = merge
 [submodule "emu"]
 	path = emu
 	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/emu.git
@@ -32,4 +27,15 @@
 	path = matrixsource
 	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/matrixsource.git
 	branch = master
+	update = merge
+[submodule "player"]
+	path = player
+	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/player.git
+[submodule "screensaver"]
+	path = screensaver
+	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/screensaver.git
+[submodule "libmueb-new"]
+	path = libmueb-new
+	url = git@git.sch.bme.hu:kszk/schmatrix/libmueb.git
+	branch = develop
 	update = merge

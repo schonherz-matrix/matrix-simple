@@ -10,12 +10,11 @@
 
 PercentSender::PercentSender(QObject *parent)
     : QObject(parent),
-      m_transmitter(MuebTransmitter::getInstance()),
-      frame_(32, 26, QImage::Format_RGB888),
+      transmitter_(libmueb::MuebTransmitter::Instance()),
+      frame_(transmitter_.frame()),
       percent_(0),
       flashCount_(0) {
   setPercent(percent_);
-  frame_.fill(Qt::black);
   timerID = startTimer(50);
 }
 
@@ -86,7 +85,7 @@ void PercentSender::setPercent(int percent) {
 
 void PercentSender::timerEvent(QTimerEvent *event) {
   if (event->timerId() == timerID) {
-    m_transmitter.sendFrame(frame_);
+    transmitter_.SendFrame(frame_);
   } else {
     if (flashCount_ == 180) {
       for (int x = 16; x < 24; x++) {
