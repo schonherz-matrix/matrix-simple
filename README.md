@@ -6,7 +6,7 @@ Schönherz Mátrix super module
 
 **FMOD** matrixsource dependency, check matrixsource\fmod\README.txt for details
 
-Qt **5.12**(LTS) or above is recommended
+Qt **6.x+**
 
 **C++ 17** compatible compiler
 
@@ -17,9 +17,9 @@ Build tools for Qt(platform dependent):
 
 ## How to build
 
-Using Qt creator open CMakeLists.txt in the project root folder then build matrix-simple project
+Using Qt creator: open CMakeLists.txt in the project root folder then build matrix-simple project
 
-Using command line in the project root folder
+Using command line in the project root folder:
 
 ```bash
 cmake -DCMAKE_BUILD_TYPE=Release -B build && cmake --build build
