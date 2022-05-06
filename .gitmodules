@@ -1,45 +1,45 @@
 [submodule "libmueb"]
 	path = libmueb
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/libmueb.git
-	branch = master
+	url = git@github.com:schonherz-matrix/old-libmueb.git
+	branch = main
 	update = merge
 [submodule "emu"]
 	path = emu
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/emu.git
-	branch = master
+	url = git@github.com:schonherz-matrix/emu.git
+	branch = main
 	update = merge
 [submodule "colorsource"]
 	path = colorsource
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/colorsource.git
-	branch = master
+	url = git@github.com:schonherz-matrix/colorsource.git
+	branch = main
 	update = merge
 [submodule "drawsource"]
 	path = drawsource
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/drawsource.git
-	branch = master
+	url = git@github.com:schonherz-matrix/drawsource.git
+	branch = main
 	update = merge
 [submodule "animsource"]
 	path = animsource
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/animsource.git
-	branch = master
+	url = git@github.com:schonherz-matrix/animsource.git
+	branch = main
 	update = merge
 [submodule "q4x-extractor"]
 	path = q4x-extractor
-	url = git@git.sch.bme.hu:kszk/schmatrix/utils/q4x-extractor.git
-	branch = master
+	url = git@github.com:schonherz-matrix/q4x-extractor.git
+	branch = main
 	update = merge
 [submodule "matrixsource"]
 	path = matrixsource
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/matrixsource.git
-	branch = master
+	url = git@github.com:schonherz-matrix/matrixsource.git
+	branch = main
 	update = merge
 [submodule "screensaver"]
 	path = screensaver
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/screensaver.git
-	branch = master
+	url = git@github.com:schonherz-matrix/screensaver.git
+	branch = main
 	update = merge
 [submodule "player"]
 	path = player
-	url = git@git.sch.bme.hu:kszk/schmatrix/matrix-simple/player.git
-	branch = master
+	url = git@github.com:schonherz-matrix/player.git
+	branch = main
 	update = merge
